@@ -24,7 +24,7 @@ variable "vms_list" {
     vm_disk_size = number
     bridge_name = string
     cloud_image_url = string
-    cloud_init_net_iface = map(object({
+    network_interfaces = map(object({
       addresses = list(string)
     }))
   }))

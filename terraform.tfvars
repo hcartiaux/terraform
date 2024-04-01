@@ -17,7 +17,7 @@ vms_list = {
     vm_vcpu = 1
     vm_disk_size = 10361393152
     cloud_image_url = "https://cloud-images.ubuntu.com/releases/23.10/release/ubuntu-23.10-server-cloudimg-amd64.img"
-    cloud_init_net_iface = {
+    network_interfaces = {
       ens3 = {
         addresses = [
           "192.168.0.5/16",
