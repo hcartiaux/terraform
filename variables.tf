@@ -17,6 +17,26 @@ variable "network_defaults" {
   })
 }
 
+variable "system_defaults" {
+  type = object({
+    domain = string
+    timezone = optional(string)
+    disable_root = optional(bool)
+    ssh_pwauth = optional(bool)
+    package_upgrade = optional(bool)
+  })
+}
+
+variable "users_defaults" {
+  type = map(object({
+    shell = optional(string)
+    sudo = optional(string)
+    hashed_passwd = optional(string)
+    lock_passwd = optional(bool)
+    ssh_authorized_keys = optional(list(string))
+  }))
+}
+
 variable "vms_list" {
   type = map(object({
     vm_memory = number
@@ -26,6 +46,17 @@ variable "vms_list" {
     cloud_image_url = string
     network_interfaces = map(object({
       addresses = list(string)
+    }))
+    system = object({
+      hostname = string
+      packages = optional(list(string))
+    })
+    users = map(object({
+      shell = optional(string)
+      sudo = optional(string)
+      hashed_passwd = optional(string)
+      lock_passwd = optional(bool)
+      ssh_authorized_keys = optional(list(string))
     }))
   }))
 }

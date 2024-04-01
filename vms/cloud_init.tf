@@ -2,63 +2,42 @@
 # echo 'yamldecode(file("vms/network_config.cfg"))' | terraform console
 locals {
   user_data = {
-    "hostname" = "ubuntu-terraform"
-    "fqdn" = "ubuntu-terraform.nbsdn.fr.eu.org"
-    "timezone" = "Europe/Paris"
-    "disable_root" = true
-    "ssh_pwauth" = false
-    "growpart" = {
-      "devices" = [
-        "/",
-      ]
-      "mode" = "auto"
+    "hostname"        = var.system.hostname
+    "fqdn"            = "${var.system.hostname}.${var.system.domain}"
+    "timezone"        = var.system.timezone
+    "disable_root"    = var.system.disable_root
+    "ssh_pwauth"      = var.system.ssh_pwauth
+    "package_upgrade" = var.system.package_upgrade
+    "packages"        = var.system.packages
+    "users"           = [
+      for user_name, user_vals in var.users:
+        {
+          "name"                = user_name
+          "shell"               = user_vals.shell
+          "sudo"                = user_vals.sudo
+          "hashed_passwd"       = user_vals.hashed_passwd
+          "lock_passwd"         = user_vals.lock_passwd
+          "ssh_authorized_keys" = user_vals.ssh_authorized_keys
+        }
+    ]
+    "growpart"        = {
+      "devices" = [ "/" ]
+      "mode"    = "auto"
     }
-    "package_upgrade" = true
-    "packages" = [
-      "bash",
-      "git",
-      "rsync",
-      "vim",
-      "curl",
-      "wget",
-    ]
-    "users" = [
-      {
-        "name" = "root"
-        "hashed_passwd" = "$6$rounds=4096$rh.qC0vBcnT9Xn2R$7kgIGriRsyDdKdgmQczJRasfEaGSojKuyxzmMD9DopM5ZpirMJhmMKFCwjAWzsX9NwswulSIvbbVhEK2XdOkK."
-        "lock_passwd" = false
-        "ssh_authorized_keys" = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtAyNLxu6GqPOLQutasE70tPMOSF+WS9LmK6kldYwPD hcartiaux@hc-xps13",
-        ]
-      },
-      {
-        "name" = "hcartiaux"
-        "hashed_passwd" = "$6$rounds=4096$rh.qC0vBcnT9Xn2R$7kgIGriRsyDdKdgmQczJRasfEaGSojKuyxzmMD9DopM5ZpirMJhmMKFCwjAWzsX9NwswulSIvbbVhEK2XdOkK."
-        "lock_passwd" = false
-        "shell" = "/bin/bash"
-        "ssh_authorized_keys" = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtAyNLxu6GqPOLQutasE70tPMOSF+WS9LmK6kldYwPD hcartiaux@hc-xps13",
-        ]
-        "sudo" = "ALL=(ALL) NOPASSWD:ALL"
-      },
-    ]
   }
-
-
   network_config = {
     "version" = 2
     "ethernets" = {
       for iface_name, iface_vals in var.network_interfaces:
         iface_name => {
-          addresses = iface_vals.addresses
-          gateway4 = iface_vals.gateway4
-          gateway6 = iface_vals.gateway6
+          addresses   = iface_vals.addresses
+          gateway4    = iface_vals.gateway4
+          gateway6    = iface_vals.gateway6
           nameservers = {
             addresses = iface_vals.nameservers
           }
         }
     }
   }
-
 }
 
