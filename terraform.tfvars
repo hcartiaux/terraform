@@ -1,3 +1,5 @@
+server_uri = "qemu+ssh://hcartiaux@srv.nbsdn.fr.eu.org:222/system"
+
 pool_name = "terraform"
 pool_path = "/var/lib/libvirt/terraform"
 

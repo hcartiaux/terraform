@@ -1,3 +1,7 @@
+variable "server_uri" {
+  type = string
+}
+
 variable "pool_name" {
   type = string
 }
