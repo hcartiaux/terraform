@@ -48,7 +48,7 @@ locals {
   network_config = {
     "version" = 2
     "ethernets" = {
-      for iface_name, iface_vals in var.cloud_init_net_iface:
+      for iface_name, iface_vals in var.network_interfaces:
         iface_name => {
           addresses = iface_vals.addresses
           gateway4 = iface_vals.gateway4

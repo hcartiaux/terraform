@@ -14,7 +14,7 @@ module "vms" {
   vm_vcpu = each.value.vm_vcpu
   vm_disk_size = each.value.vm_disk_size
   cloud_image_url = each.value.cloud_image_url
-  cloud_init_net_iface = { for iface_name, iface_vals in each.value.network_interfaces:
+  network_interfaces = { for iface_name, iface_vals in each.value.network_interfaces:
     iface_name => merge(var.network_defaults, iface_vals)
   }
 }

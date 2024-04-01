@@ -58,7 +58,7 @@ variable "cloud_image_url" {
 # cloud_init_user_password_locked
 # cloud_init_user_authorized_keys
 
-variable "cloud_init_net_iface" {
+variable "network_interfaces" {
   description = "Network interfaces configuration"
   type = map(object({
     addresses = list(string)
