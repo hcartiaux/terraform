@@ -9,6 +9,14 @@ variable "pool_path" {
   type = string
 }
 
+variable "network_defaults" {
+  type = object({
+    gateway4 = string
+    gateway6 = string
+    nameservers = list(string)
+  })
+}
+
 variable "vms_list" {
   type = map(object({
     vm_memory = number
@@ -16,6 +24,9 @@ variable "vms_list" {
     vm_disk_size = number
     bridge_name = string
     cloud_image_url = string
+    cloud_init_net_iface = map(object({
+      addresses = list(string)
+    }))
   }))
 }
 

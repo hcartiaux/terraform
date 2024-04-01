@@ -57,10 +57,26 @@ variable "cloud_image_url" {
 # cloud_init_user_password_hash
 # cloud_init_user_password_locked
 # cloud_init_user_authorized_keys
-#
-# cloud_init_net_iface_name
-# cloud_init_net_addresses
-# cloud_init_net_gateway4
-# cloud_init_net_gateway6
-# cloud_init_net_nameservers
 
+variable "cloud_init_net_iface" {
+  description = "Network interfaces configuration"
+  type = map(object({
+    addresses = list(string)
+    gateway4 = string
+    gateway6 = string
+    nameservers = list(string)
+  }))
+  default = {
+    "ens3" = {
+      "addresses" = [
+        "192.168.0.42/16",
+        "2001:bc8:3feb:100::42/64",
+      ]
+      "gateway4" = "192.168.0.1"
+      "gateway6" = "2001:bc8:3feb:100::2"
+      "nameservers" = [
+          "2001:bc8:3feb:100::2",
+      ]
+    }
+  }
+}

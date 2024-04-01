@@ -48,20 +48,17 @@ locals {
   network_config = {
     "version" = 2
     "ethernets" = {
-      "ens3" = {
-        "addresses" = [
-          "192.168.0.5/16",
-          "2001:bc8:3feb:100::5/64",
-        ]
-        "gateway4" = "192.168.0.1"
-        "gateway6" = "2001:bc8:3feb:100::2"
-        "nameservers" = {
-          "addresses" = [
-            "2001:bc8:3feb:100::2",
-          ]
+      for iface_name, iface_vals in var.cloud_init_net_iface:
+        iface_name => {
+          addresses = iface_vals.addresses
+          gateway4 = iface_vals.gateway4
+          gateway6 = iface_vals.gateway6
+          nameservers = {
+            addresses = iface_vals.nameservers
+          }
         }
-      }
     }
   }
+
 }
 
