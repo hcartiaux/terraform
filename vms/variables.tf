@@ -55,7 +55,7 @@ variable "system" {
     disable_root    = optional(bool, false)
     ssh_pwauth      = optional(bool, false)
     package_upgrade = optional(bool, true)
-    packages        = optional(list(string), [])
+    packages        = optional(list(string), [ "" ])
   })
 }
 
