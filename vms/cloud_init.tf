@@ -34,6 +34,16 @@ locals {
           addresses   = iface_vals.addresses
           gateway4    = iface_vals.gateway4
           gateway6    = iface_vals.gateway6
+#         routes      = [
+#           {
+#             "to" = "0.0.0.0"
+#             "via" = iface_vals.gateway4
+#           },
+#           {
+#             "to" = "::/0"
+#             "via" = iface_vals.gateway6
+#           }
+#         ]
           nameservers = {
             addresses = iface_vals.nameservers
           }
