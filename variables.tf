@@ -5,9 +5,6 @@ variable "server_uri" {
 variable "pool_name" {
   type = string
 }
-variable "pool_path" {
-  type = string
-}
 
 variable "network_defaults" {
   type = object({
