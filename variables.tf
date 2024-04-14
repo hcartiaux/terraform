@@ -54,6 +54,7 @@ variable "vms_list" {
     users = map(object({
       shell = optional(string)
       sudo = optional(string)
+      doas = optional(string)
       hashed_passwd = optional(string)
       lock_passwd = optional(bool)
       ssh_authorized_keys = optional(list(string))

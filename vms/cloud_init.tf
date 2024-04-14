@@ -15,6 +15,7 @@ locals {
           "name"                = user_name
           "shell"               = user_vals.shell
           "sudo"                = user_vals.sudo
+          "doas"                = [ user_vals.doas ]
           "hashed_passwd"       = user_vals.hashed_passwd
           "lock_passwd"         = user_vals.lock_passwd
           "ssh_authorized_keys" = user_vals.ssh_authorized_keys
