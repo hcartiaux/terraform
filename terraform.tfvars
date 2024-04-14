@@ -68,7 +68,7 @@ vms_list = {
       }
     }
     system             = {
-      hostname = "tf-openbsd"
+      hostname = "shell"
       packages = [ "wget", "bash", "vim--no_x11" ]
     }
     users              = {
