@@ -39,7 +39,7 @@ vms_list = {
       }
     }
     system             = {
-      hostname = "gw-dn42.nbsdn.fr.eu.org"
+      hostname = "gw-dn42"
       packages = [ "wget" ]
     }
     users              = {
@@ -68,7 +68,7 @@ vms_list = {
       }
     }
     system             = {
-      hostname = "shell.nbsdn.fr.eu.org"
+      hostname = "shell"
       packages = [ "wget", "bash", "vim--no_x11" ]
     }
     users              = {
