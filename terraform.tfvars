@@ -1,4 +1,4 @@
-server_uri = "qemu+ssh://hcartiaux@srv.nbsdn.fr.eu.org:222/system"
+server_uri = "qemu+ssh://hcartiaux@srv.nbsdn.fr.eu.org:443/system"
 pool_name  = "terraform"
 pool_path  = "/var/lib/libvirt/terraform"
 
@@ -24,6 +24,35 @@ users_defaults = {
 }
 
 vms_list = {
+  "tf-gw2-dn42" = {
+    bridge_name        = "vmbr0"
+    vm_memory          = 384
+    vm_vcpu            = 1
+    vm_disk_size       = 100
+    cloud_image_url    = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
+    network_interfaces = {
+      ens3 = {
+        addresses = [
+          "192.168.0.6/16",
+          "2001:bc8:3feb:100::6/64",
+        ]
+      }
+    }
+    system             = {
+      hostname = "gw2-dn42"
+      packages = [ "wget" ]
+    }
+    users              = {
+      "hcartiaux" = {
+        shell               = "/bin/bash"
+        sudo                = "ALL=(ALL) NOPASSWD:ALL"
+        hashed_passwd       = "!"
+        lock_passwd         = true
+        ssh_authorized_keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtAyNLxu6GqPOLQutasE70tPMOSF+WS9LmK6kldYwPD hcartiaux@hc-xps13" ]
+      }
+    }
+  }
+
   "tf-bspdestroyer" = {
     bridge_name        = "vmbr0"
     vm_memory          = 300
