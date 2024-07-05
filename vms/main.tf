@@ -11,7 +11,7 @@ resource "libvirt_volume" "disk_vm_resized" {
   name           = "${var.vm_name}.qcow2"
   base_volume_id = libvirt_volume.disk_vm.id
   pool           = var.pool_name
-  size           = 1024*1024*1024*var.vm_disk_size
+  size           = 1024 * 1024 * 1024 * var.vm_disk_size
 }
 
 # Create the cloud-init iso
