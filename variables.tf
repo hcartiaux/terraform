@@ -42,6 +42,8 @@ variable "vms_list" {
     vm_memory       = number
     vm_vcpu         = number
     vm_disk_size    = number
+    vm_autostart    = optional(bool)
+    vm_running      = optional(bool)
     bridge_name     = string
     cloud_image_url = string
     network_interfaces = map(object({

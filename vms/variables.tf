@@ -32,6 +32,20 @@ variable "vm_disk_size" {
   nullable    = false
 }
 
+variable "vm_autostart" {
+  description = "Autostart the VM on boot"
+  type        = bool
+  default     = true
+  nullable    = false
+}
+
+variable "vm_running" {
+  description = "Start the VM immediately"
+  type        = bool
+  default     = true
+  nullable    = false
+}
+
 variable "bridge_name" {
   description = "Host bridge interface name"
   type        = string

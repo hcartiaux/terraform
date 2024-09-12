@@ -22,12 +22,13 @@ resource "libvirt_cloudinit_disk" "commoninit" {
   pool           = var.pool_name
 }
 
-
 # Create the machine
 resource "libvirt_domain" "domain-vm" {
-  name   = var.vm_name
-  memory = var.vm_memory
-  vcpu   = var.vm_vcpu
+  name      = var.vm_name
+  memory    = var.vm_memory
+  vcpu      = var.vm_vcpu
+  autostart = var.vm_autostart
+  running   = var.vm_running
 
   cloudinit = libvirt_cloudinit_disk.commoninit.id
 
@@ -49,8 +50,6 @@ resource "libvirt_domain" "domain-vm" {
     target_type = "virtio"
     target_port = "1"
   }
-
-  autostart = true
 
   disk {
     volume_id = libvirt_volume.disk_vm_resized.id
