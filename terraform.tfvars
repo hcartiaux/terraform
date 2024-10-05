@@ -84,35 +84,6 @@ vms_list = {
     }
   }
 
-  "tf-bspdestroyer" = {
-    bridge_name     = "vmbr0"
-    vm_memory       = 300
-    vm_vcpu         = 1
-    vm_disk_size    = 50
-    cloud_image_url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
-    network_interfaces = {
-      ens3 = {
-        addresses = [
-          "192.168.0.7/16",
-          "2001:bc8:3feb:100::7/64",
-        ]
-      }
-    }
-    system = {
-      hostname = "bspdestroyer"
-      packages = ["wget"]
-    }
-    users = {
-      "alecomte" = {
-        shell               = "/bin/bash"
-        sudo                = "ALL=(ALL) NOPASSWD:ALL"
-        hashed_passwd       = "!"
-        lock_passwd         = true
-        ssh_authorized_keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKEWD9bAOkDLgzluM70H7JHuphCPXO1REcsEQiku1bdU arnaud@arnaud"]
-      }
-    }
-  }
-
   "tf-gw-dn42" = {
     bridge_name     = "vmbr0"
     vm_memory       = 384
