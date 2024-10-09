@@ -115,7 +115,7 @@ vms_list = {
 
   "tf-openbsd" = {
     bridge_name     = "vmbr0"
-    vm_memory       = 384
+    vm_memory       = 512
     vm_vcpu         = 1
     vm_disk_size    = 100
     cloud_image_url = "https://github.com/hcartiaux/openbsd-cloud-image/releases/download/v7.6_2024-10-08-22-40/openbsd-min.qcow2"
