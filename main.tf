@@ -1,7 +1,9 @@
 resource "libvirt_pool" "terraform" {
   name = var.pool_name
   type = "dir"
-  path = var.pool_path
+  target {
+    path = var.pool_path
+  }
 }
 
 module "vms" {
