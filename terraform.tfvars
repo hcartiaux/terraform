@@ -1,4 +1,4 @@
-server_uri = "qemu+ssh://hcartiaux@srv.nbsdn.fr.eu.org:443/system"
+server_uri = "qemu+ssh://hcartiaux@51.158.153.183/system"
 pool_name  = "terraform"
 pool_path  = "/var/lib/libvirt/terraform"
 
@@ -24,67 +24,7 @@ users_defaults = {
 }
 
 vms_list = {
-  "tf-librenms-dn42" = {
-    bridge_name     = "vmbr0"
-    vm_memory       = 1024
-    vm_vcpu         = 1
-    vm_disk_size    = 100
-    vm_autostart    = false
-    vm_running      = false
-    cloud_image_url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
-    network_interfaces = {
-      ens3 = {
-        addresses = [
-          "192.168.0.5/16",
-          "2001:bc8:3feb:100::5/64",
-        ]
-      }
-    }
-    system = {
-      hostname = "librenms-dn42"
-      packages = ["wget"]
-    }
-    users = {
-      "hcartiaux" = {
-        shell               = "/bin/bash"
-        sudo                = "ALL=(ALL) NOPASSWD:ALL"
-        hashed_passwd       = "!"
-        lock_passwd         = true
-        ssh_authorized_keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtAyNLxu6GqPOLQutasE70tPMOSF+WS9LmK6kldYwPD hcartiaux@hc-xps13"]
-      }
-    }
-  }
-
-  "tf-gw2-dn42" = {
-    bridge_name     = "vmbr0"
-    vm_memory       = 384
-    vm_vcpu         = 1
-    vm_disk_size    = 100
-    cloud_image_url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
-    network_interfaces = {
-      ens3 = {
-        addresses = [
-          "192.168.0.6/16",
-          "2001:bc8:3feb:100::6/64",
-        ]
-      }
-    }
-    system = {
-      hostname = "gw2-dn42"
-      packages = ["wget"]
-    }
-    users = {
-      "hcartiaux" = {
-        shell               = "/bin/bash"
-        sudo                = "ALL=(ALL) NOPASSWD:ALL"
-        hashed_passwd       = "!"
-        lock_passwd         = true
-        ssh_authorized_keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtAyNLxu6GqPOLQutasE70tPMOSF+WS9LmK6kldYwPD hcartiaux@hc-xps13"]
-      }
-    }
-  }
-
-  "tf-gw-dn42" = {
+  "dn42-fr-ams1" = {
     bridge_name     = "vmbr0"
     vm_memory       = 384
     vm_vcpu         = 1
@@ -99,7 +39,7 @@ vms_list = {
       }
     }
     system = {
-      hostname = "gw-dn42"
+      hostname = "dn42-fr-ams1"
       packages = ["wget"]
     }
     users = {
@@ -113,7 +53,7 @@ vms_list = {
     }
   }
 
-  "tf-openbsd" = {
+  "shell" = {
     bridge_name     = "vmbr0"
     vm_memory       = 512
     vm_vcpu         = 1
@@ -142,4 +82,64 @@ vms_list = {
       }
     }
   }
+
+# "tf-librenms-dn42" = {
+#   bridge_name     = "vmbr0"
+#   vm_memory       = 1024
+#   vm_vcpu         = 1
+#   vm_disk_size    = 100
+#   vm_autostart    = false
+#   vm_running      = false
+#   cloud_image_url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
+#   network_interfaces = {
+#     ens3 = {
+#       addresses = [
+#         "192.168.0.5/16",
+#         "2001:bc8:3feb:100::5/64",
+#       ]
+#     }
+#   }
+#   system = {
+#     hostname = "librenms-dn42"
+#     packages = ["wget"]
+#   }
+#   users = {
+#     "hcartiaux" = {
+#       shell               = "/bin/bash"
+#       sudo                = "ALL=(ALL) NOPASSWD:ALL"
+#       hashed_passwd       = "!"
+#       lock_passwd         = true
+#       ssh_authorized_keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtAyNLxu6GqPOLQutasE70tPMOSF+WS9LmK6kldYwPD hcartiaux@hc-xps13"]
+#     }
+#   }
+# }
+#
+# "tf-gw2-dn42" = {
+#   bridge_name     = "vmbr0"
+#   vm_memory       = 384
+#   vm_vcpu         = 1
+#   vm_disk_size    = 100
+#   cloud_image_url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
+#   network_interfaces = {
+#     ens3 = {
+#       addresses = [
+#         "192.168.0.6/16",
+#         "2001:bc8:3feb:100::6/64",
+#       ]
+#     }
+#   }
+#   system = {
+#     hostname = "gw2-dn42"
+#     packages = ["wget"]
+#   }
+#   users = {
+#     "hcartiaux" = {
+#       shell               = "/bin/bash"
+#       sudo                = "ALL=(ALL) NOPASSWD:ALL"
+#       hashed_passwd       = "!"
+#       lock_passwd         = true
+#       ssh_authorized_keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtAyNLxu6GqPOLQutasE70tPMOSF+WS9LmK6kldYwPD hcartiaux@hc-xps13"]
+#     }
+#   }
+# }
 }
