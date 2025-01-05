@@ -24,7 +24,7 @@ users_defaults = {
 }
 
 vms_list = {
-  "dn42-fr-ams1" = {
+  "dn42-nl-ams1" = {
     bridge_name     = "vmbr0"
     vm_memory       = 384
     vm_vcpu         = 1
@@ -39,7 +39,7 @@ vms_list = {
       }
     }
     system = {
-      hostname = "dn42-fr-ams1"
+      hostname = "dn42-nl-ams1"
       packages = ["wget"]
     }
     users = {
