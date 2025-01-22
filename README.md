@@ -1,8 +1,12 @@
 # Terraform
 
-This is my own Terraform configuration repository for my homelab, based on libvirt and cloud-init system images.
+This is my own Terraform configuration repository for my homelab.
 
-The main configuration file is `terraform.tfvars`, new VMs can be created by adding new entries in the hash `vms_list`. Each VM description will be converted to cloud-init configuration and be used to bootstrap the system on boot.
+It is split in two directories:
+
+* `libvirt`, to spawn VMs with cloud-init on my dedibox server. The main configuration file is `terraform.tfvars`, new VMs can be created by adding new entries in the hash `vms_list`. Each VM description will be converted to cloud-init configuration and be used to bootstrap the system on boot.
+
+* `scaleway`, for anything related to my scaleway cloud account
 
 ## Configuration analysis
 
