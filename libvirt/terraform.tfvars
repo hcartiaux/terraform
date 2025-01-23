@@ -39,7 +39,7 @@ vms_list = {
       }
     }
     system = {
-      hostname = "dn42-nl-ams1"
+      hostname = "nl-ams1"
       packages = ["wget"]
     }
     users = {
@@ -67,7 +67,7 @@ vms_list = {
       }
     }
     system = {
-      hostname = "dn42-nl-ams2"
+      hostname = "nl-ams2"
       packages = ["wget"]
     }
     users = {
