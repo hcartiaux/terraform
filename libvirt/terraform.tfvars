@@ -1,4 +1,4 @@
-server_uri = "qemu+ssh://hcartiaux@51.158.153.183/system"
+server_uri = "qemu+ssh://hcartiaux@srv.flap42.eu/system"
 pool_name  = "terraform"
 pool_path  = "/var/lib/libvirt/terraform"
 
@@ -68,34 +68,6 @@ vms_list = {
     }
     system = {
       hostname = "nl-ams2"
-      packages = ["wget"]
-    }
-    users = {
-      "hcartiaux" = {
-        shell               = "/bin/bash"
-        sudo                = "ALL=(ALL) NOPASSWD:ALL"
-        hashed_passwd       = "!"
-        lock_passwd         = true
-        ssh_authorized_keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtAyNLxu6GqPOLQutasE70tPMOSF+WS9LmK6kldYwPD hcartiaux@hc-xps13"]
-      }
-    }
-  }
-  "dn42-flipflapix" = {
-    bridge_name     = "vmbr0"
-    vm_memory       = 384
-    vm_vcpu         = 1
-    vm_disk_size    = 100
-    cloud_image_url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
-    network_interfaces = {
-      ens3 = {
-        addresses = [
-          "192.168.0.8/16",
-          "2001:bc8:3feb:100::8/64",
-        ]
-      }
-    }
-    system = {
-      hostname = "dn42-flipflapix"
       packages = ["wget"]
     }
     users = {
