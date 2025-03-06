@@ -1,4 +1,4 @@
-server_uri = "qemu+ssh://hcartiaux@srv.flap42.eu/system"
+server_uri = "qemu+ssh://hcartiaux@srv.flap42.eu:443/system"
 pool_name  = "terraform"
 pool_path  = "/var/lib/libvirt/terraform"
 
