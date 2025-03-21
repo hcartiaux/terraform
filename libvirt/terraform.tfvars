@@ -9,7 +9,7 @@ network_defaults = {
 }
 
 system_defaults = {
-  domain          = "nbsdn.fr.eu.org"
+  domain          = "flap42.eu"
   timezone        = "Europe/Paris"
   disable_root    = true
   ssh_pwauth      = false
