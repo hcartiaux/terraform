@@ -1,4 +1,13 @@
 ###
+# Scaleway account main ssh public key
+###
+
+resource "scaleway_account_ssh_key" "main" {
+    name        = "main"
+    public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtAyNLxu6GqPOLQutasE70tPMOSF+WS9LmK6kldYwPD hcartiaux@hc-xps13"
+}
+
+###
 # Flap42.eu zone configuration
 ###
 
