@@ -15,3 +15,8 @@ variable "project_id" {
   default     = "11111111-1111-1111-1111-111111111111"
   description = "Your project ID."
 }
+
+variable "ssh_pub_key" {
+  type        = string
+  description = "Your SSH public key"
+}

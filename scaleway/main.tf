@@ -50,6 +50,18 @@ resource "scaleway_domain_record" "ns2" {
 }
 
 ###
+# Cloud-init
+###
+
+data "template_file" "userdata" {
+  template = file("${path.module}/cloud-init.yaml")
+
+  vars = {
+    ssh_pub_key = var.ssh_pub_key
+  }
+}
+
+###
 # Instances
 ###
 
@@ -75,6 +87,9 @@ resource "scaleway_instance_server" "pl-war1" {
   # Attach the IPv6 address
   ip_id = scaleway_instance_ip.pl_war1_ipv6.id
 
+  # initialization sequence
+  cloud_init = data.template_file.userdata.rendered
+
   tags = [ "dn42" ]
 }
 
@@ -99,6 +114,9 @@ resource "scaleway_instance_server" "fr-par1" {
 
   # Attach the IPv6 address
   ip_id = scaleway_instance_ip.fr_par1_ipv6.id
+
+  # initialization sequence
+  cloud_init = data.template_file.userdata.rendered
 
   tags = [ "dn42" ]
 }

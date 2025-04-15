@@ -1,0 +1,23 @@
+#cloud-config
+
+# Modify the main SSH config file to use port 222
+runcmd:
+  - sed -i 's/#Port 22/Port 222/' /etc/ssh/sshd_config
+  - systemctl restart sshd
+
+# Create user hcartiaux with sudo rights
+users:
+  - name: hcartiaux
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ${ssh_pub_key}
+
+# packages
+package_update: true
+package_upgrade: true
+
+packages:
+  - git
+  - vim
+  - rsync
