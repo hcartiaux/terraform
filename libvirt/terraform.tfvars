@@ -80,35 +80,6 @@ vms_list = {
       }
     }
   }
-  "dn42-nl-shell" = {
-    bridge_name     = "vmbr0"
-    vm_memory       = 1024
-    vm_vcpu         = 1
-    vm_disk_size    = 250
-    cloud_image_url = "https://github.com/hcartiaux/openbsd-cloud-image/releases/download/v7.7_2025-04-28-11-38/openbsd-min.qcow2"
-    network_interfaces = {
-      vio0 = {
-        addresses = [
-          "192.168.0.8/16",
-          "2001:bc8:3feb:100::8/64",
-        ]
-      }
-    }
-    system = {
-      hostname = "shell"
-      packages = ["wget", "bash", "vim--no_x11"]
-    }
-    users = {
-      "hcartiaux" = {
-        shell               = "/usr/local/bin/bash"
-        doas                = "permit nopass hcartiaux as root"
-        sudo                = "ALL=(ALL) NOPASSWD:ALL"
-        hashed_passwd       = "!"
-        lock_passwd         = true
-        ssh_authorized_keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtAyNLxu6GqPOLQutasE70tPMOSF+WS9LmK6kldYwPD hcartiaux@hc-xps13"]
-      }
-    }
-  }
 
   "shell" = {
     bridge_name     = "vmbr0"
