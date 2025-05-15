@@ -48,7 +48,10 @@ vms_list = {
         sudo                = "ALL=(ALL) NOPASSWD:ALL"
         hashed_passwd       = "!"
         lock_passwd         = true
-        ssh_authorized_keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtAyNLxu6GqPOLQutasE70tPMOSF+WS9LmK6kldYwPD hcartiaux@hc-xps13"]
+        ssh_authorized_keys = [
+                               "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG/fFzJniYWJ+aIXgMEHP2SQcVk4HkLe7UQJGdZu6yFI hcartiaux.perso@hc-promax14",
+                               "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJCrBV27QA4k89VmkTKn1qdhN1nHITXkYlAfmKNfb1Md deck@hc-steamdeck"
+                              ]
       }
     }
   }
@@ -76,7 +79,10 @@ vms_list = {
         sudo                = "ALL=(ALL) NOPASSWD:ALL"
         hashed_passwd       = "!"
         lock_passwd         = true
-        ssh_authorized_keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtAyNLxu6GqPOLQutasE70tPMOSF+WS9LmK6kldYwPD hcartiaux@hc-xps13"]
+        ssh_authorized_keys = [
+                               "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG/fFzJniYWJ+aIXgMEHP2SQcVk4HkLe7UQJGdZu6yFI hcartiaux.perso@hc-promax14",
+                               "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJCrBV27QA4k89VmkTKn1qdhN1nHITXkYlAfmKNfb1Md deck@hc-steamdeck"
+                              ]
       }
     }
   }
@@ -106,7 +112,10 @@ vms_list = {
         sudo                = "ALL=(ALL) NOPASSWD:ALL"
         hashed_passwd       = "!"
         lock_passwd         = true
-        ssh_authorized_keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICtAyNLxu6GqPOLQutasE70tPMOSF+WS9LmK6kldYwPD hcartiaux@hc-xps13"]
+        ssh_authorized_keys = [
+                               "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG/fFzJniYWJ+aIXgMEHP2SQcVk4HkLe7UQJGdZu6yFI hcartiaux.perso@hc-promax14",
+                               "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJCrBV27QA4k89VmkTKn1qdhN1nHITXkYlAfmKNfb1Md deck@hc-steamdeck"
+                              ]
       }
     }
   }
