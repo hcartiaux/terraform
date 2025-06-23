@@ -47,7 +47,7 @@ resource "scaleway_domain_record" "dkim" {
   dns_zone = "cartiaux.net"
   name     = "dkim._domainkey"
   type     = "TXT"
-  data     = "v=DKIM1;k=rsa;"
+  data     = "v=DKIM1;k=rsa;t=s;s=email;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApLDD6mRdj6XrKM/TcE4f3hYifngV2AqH2Y4vl8JheGk0jIvDCoDPxb7eTl0G432NzyqEQ9vW5TqYB23avMmz2ZEw8kTwY1cQYlKC2dDgcyeApXxpgSsp9AK2lXisMVz7yZzasac1mQbKbyLjt1j2DnaCamnuVUY6TbJJGgejNva7vsPLdJhdaeYpnl7FW7GhZkGEqZhcmmxArMYLDzbONQTd2zUMY9qGa2/Nsds+o/e/AD+gZVKtd2WdL/VZRdjFrWpYGgbwVMoPHVKjOPWy47qZd2GY+CjPazcV7EuC6dspmy8kw01py437w/JqSIPUV0ZvbNqaG4E/ZP2AHMN4NwIDAQAB"
   ttl      = 10800
 }
 resource "scaleway_domain_record" "dmarc" {
