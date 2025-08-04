@@ -14,6 +14,12 @@ resource "scaleway_domain_record" "ns1-scw" {
   data     = "ns1.dom.scw.cloud."
   ttl      = 1800
 }
+resource "scaleway_domain_record" "defaul_alias" {
+  dns_zone = "cartiaux.net"
+  type     = "ALIAS"
+  data     = "hcartiaux.github.io."
+  ttl      = 10800
+}
 resource "scaleway_domain_record" "mx1" {
   dns_zone = "cartiaux.net"
   type     = "MX"
