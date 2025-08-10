@@ -57,3 +57,31 @@ resource "scaleway_instance_server" "fr-par1" {
 
   tags = [ "dn42" ]
 }
+
+# dn42 node nl-ams3
+resource "scaleway_instance_ip" "nl_ams3_ipv6" {
+  zone = "nl-ams-1"
+  type = "routed_ipv6"
+}
+resource "scaleway_instance_ip_reverse_dns" "nl_ams3_ipv6_reverse" {
+  zone = "nl-ams-1"
+  ip_id = scaleway_instance_ip.nl_ams3_ipv6.id
+  reverse = "nl-ams3.flap42.eu."
+}
+resource "scaleway_instance_server" "nl-ams3" {
+  zone = "nl-ams-1"
+  name = "nl-ams3.flap42.eu"
+  type = "STARDUST1-S"
+  image = "debian_bookworm"
+
+  # No IPv4 configuration
+  enable_dynamic_ip = false
+
+  # Attach the IPv6 address
+  ip_id = scaleway_instance_ip.nl_ams3_ipv6.id
+
+  # initialization sequence
+  cloud_init = data.template_file.userdata.rendered
+
+  tags = [ "dn42" ]
+}
