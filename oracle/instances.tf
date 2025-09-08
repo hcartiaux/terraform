@@ -39,32 +39,24 @@ resource "oci_core_instance" "fr_mrs1" {
   }
 }
 
-# Find the VNIC attachment for the instance
-data "oci_core_vnic_attachments" "fr_mrs1_vnics" {
+data "oci_core_vnic_attachments" "vnics_fr_mrs1" {
   compartment_id = var.tenancy_ocid
   instance_id    = oci_core_instance.fr_mrs1.id
 }
-
-# Find the primary private IP using the VNIC ID from the attachment
 data "oci_core_private_ips" "primary_private_ip" {
-  # Using the VNIC OCID is more reliable than using the IP address string
-  vnic_id = data.oci_core_vnic_attachments.fr_mrs1_vnics.vnic_attachments[0].vnic_id
+  vnic_id = data.oci_core_vnic_attachments.vnics_fr_mrs1.vnic_attachments[0].vnic_id
 }
 
-# Create and assign a reserved IPv4 Public IP
 resource "oci_core_public_ip" "public_ip_fr_mrs1" {
   compartment_id = var.tenancy_ocid
   display_name   = "fr-mrs1 PublicIP"
   lifetime       = "RESERVED"
   private_ip_id = data.oci_core_private_ips.primary_private_ip.private_ips[0].id
 }
-
-# Create and assign a Public IPv6
 resource "oci_core_ipv6" "public_ipv6_fr_mrs1" {
   display_name = "fr-mrs1 Public IPv6"
-  vnic_id      = data.oci_core_vnic_attachments.fr_mrs1_vnics.vnic_attachments[0].vnic_id
+  vnic_id      = data.oci_core_vnic_attachments.vnics_fr_mrs1.vnic_attachments[0].vnic_id
 }
-
 
 
 ## fr-mrs2
@@ -108,28 +100,21 @@ resource "oci_core_instance" "fr_mrs2" {
   }
 }
 
-# Find the VNIC attachment for the instance
-data "oci_core_vnic_attachments" "fr_mrs2_vnics" {
+data "oci_core_vnic_attachments" "vnics_fr_mrs2" {
   compartment_id = var.tenancy_ocid
   instance_id    = oci_core_instance.fr_mrs2.id
 }
-
-# Find the primary private IP using the VNIC ID from the attachment
 data "oci_core_private_ips" "primary_private_ip_fr_mrs2" {
-  # Using the VNIC OCID is more reliable than using the IP address string
-  vnic_id = data.oci_core_vnic_attachments.fr_mrs2_vnics.vnic_attachments[0].vnic_id
+  vnic_id = data.oci_core_vnic_attachments.vnics_fr_mrs2.vnic_attachments[0].vnic_id
 }
 
-# Create and assign a reserved IPv4 Public IP
 resource "oci_core_public_ip" "public_ip_fr_mrs2" {
   compartment_id = var.tenancy_ocid
   display_name   = "fr-mrs2 PublicIP"
   lifetime       = "RESERVED"
   private_ip_id  = data.oci_core_private_ips.primary_private_ip_fr_mrs2.private_ips[0].id
 }
-
-# Create and assign a Public IPv6
 resource "oci_core_ipv6" "public_ipv6_fr_mrs2" {
   display_name = "fr-mrs1 Public IPv6"
-  vnic_id      = data.oci_core_vnic_attachments.fr_mrs2_vnics.vnic_attachments[0].vnic_id
+  vnic_id      = data.oci_core_vnic_attachments.vnics_fr_mrs2.vnic_attachments[0].vnic_id
 }
