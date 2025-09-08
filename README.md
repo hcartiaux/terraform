@@ -4,9 +4,15 @@ This is my own Terraform configuration repository for my homelab.
 
 It is split in two directories:
 
-* `libvirt`, to spawn VMs with cloud-init on my dedibox server. The main configuration file is `terraform.tfvars`, new VMs can be created by adding new entries in the hash `vms_list`. Each VM description will be converted to cloud-init configuration and be used to bootstrap the system on boot.
+* `libvirt`, to spawn VMs with cloud-init on my dedibox server.
+  The main configuration file is `terraform.tfvars`,
+  new VMs can be created by adding new entries in the hash `vms_list`.
+  Each VM description will be converted to cloud-init configuration and be
+  used to bootstrap the system on boot.
 
-* `scaleway`, for anything related to my scaleway cloud account
+* `scaleway`, for my Scaleway cloud infrastructure
+
+* `oracle`, for my Oracle cloud infrastructure (free tier)
 
 ## Configuration analysis
 
@@ -17,7 +23,7 @@ It is split in two directories:
 ## Workflow
 
 * Prepare the working directory: `terraform init`
-* Show changes to the infrastructure required by the current configuration: `terraform plan`
+* Show changes required by the current configuration: `terraform plan`
 * Create or modify the infrastructure: `terraform apply`
 * Destroy all the infrastructure: `terraform destroy`
 
@@ -26,16 +32,7 @@ It is split in two directories:
 * List all resources: `terraform state list`
 * Destroy a particular VM: `terraform destroy -target 'module.vms["tf-openbsd"]'`
 
-# Cloud-init
+## Cloud-init
 
-On a booted VM, you can verify the generated cloud-init configuration with this command as root: `cloud-init schema --system`
-
-# External resources
-
-* https://www.freecodecamp.org/news/terraform-modules-explained/
-* https://spacelift.io/blog/terraform-files
-* https://spacelift.io/blog/how-to-use-terraform-variables
-* https://cloud.google.com/docs/terraform/best-practices-for-terraform
-* https://www.digitalocean.com/community/tutorial-series/how-to-manage-infrastructure-with-terraform
-* https://www.digitalocean.com/community/tutorials/how-to-structure-a-terraform-project
-* https://github.com/github/gitignore/blob/main/Terraform.gitignore
+On a booted VM, you can verify the generated cloud-init configuration with this
+command as root: `cloud-init schema --system`
