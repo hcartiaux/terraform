@@ -1,1 +1,27 @@
-../scaleway/cloud-init.yaml
+#cloud-config
+
+# Modify the main SSH config file to use port 222
+runcmd:
+  - systemctl disable --now ssh.socket
+  - systemctl enable --now ssh.service
+  - iptables -I INPUT 4 -p tcp -m state --state NEW -m tcp --dport 222 -j ACCEPT
+  - iptables-save > /etc/iptables/rules.v4
+  - sed -i 's/#Port 22/Port 222/' /etc/ssh/sshd_config
+  - systemctl restart ssh
+
+# Create user hcartiaux with sudo rights
+users:
+  - name: hcartiaux
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ${ssh_pub_key}
+
+# packages
+package_update: true
+package_upgrade: true
+
+packages:
+  - git
+  - vim
+  - rsync
