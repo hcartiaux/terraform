@@ -14,7 +14,7 @@ resource "scaleway_instance_ip_reverse_dns" "pl_war1_ipv6_reverse" {
 }
 resource "scaleway_instance_server" "pl-war1" {
   zone = "pl-waw-2"
-  name = "pl-war1.flap42.eu"
+  name = "pl-waw1.flap42.eu"
   type = "STARDUST1-S"
   image = "debian_bookworm"
 
