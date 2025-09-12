@@ -67,7 +67,7 @@ resource "oci_core_security_list" "security_list" {
   vcn_id         = oci_core_vcn.vcn.id
   display_name   = "Security List"
 
-  # IPv4 and IPv6 egress rules
+  # IPv4 and IPv6 egress rules (allow all outbound)
   egress_security_rules {
     protocol    = "all"
     destination = "0.0.0.0/0"
@@ -76,22 +76,13 @@ resource "oci_core_security_list" "security_list" {
     protocol    = "all"
     destination = "::/0"
   }
-
-  # IPv4 and IPv6 ingress rules
+  # IPv4 and IPv6 ingress rules (allow all inbound)
   ingress_security_rules {
-    protocol = "6"
+    protocol = "all"
     source   = "0.0.0.0/0"
-    tcp_options {
-      max = "222"
-      min = "222"
-    }
   }
   ingress_security_rules {
-    protocol = "6"
+    protocol = "all"
     source   = "::/0"
-    tcp_options {
-      max = "222"
-      min = "222"
-    }
   }
 }
