@@ -2,7 +2,7 @@
 
 This is my own Terraform configuration repository for my homelab.
 
-It is split in two directories:
+It is split in three directories:
 
 * `libvirt`, to spawn VMs with cloud-init on my dedibox server.
   The main configuration file is `terraform.tfvars`,
