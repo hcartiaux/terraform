@@ -26,7 +26,7 @@ users_defaults = {
 vms_list = {
   "dn42-nl-ams1" = {
     bridge_name     = "vmbr0"
-    vm_memory       = 384
+    vm_memory       = 512
     vm_vcpu         = 1
     vm_disk_size    = 100
     cloud_image_url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
@@ -57,7 +57,7 @@ vms_list = {
   }
   "dn42-nl-ams2" = {
     bridge_name     = "vmbr0"
-    vm_memory       = 384
+    vm_memory       = 512
     vm_vcpu         = 1
     vm_disk_size    = 100
     cloud_image_url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-genericcloud-amd64.qcow2"
